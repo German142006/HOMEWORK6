@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JS в HTML</title>
+</head>
+
+<body>
+
+  <script>
+
+function checkSameDigits(number) {
+    // Перевірка на однаковість всіх цифр
+    let allSame = true;
+    const digits = String(number).split('');
+    const firstDigit = digits[0];
+    for (let i = 1; i < digits.length; i++) {
+        if (digits[i] !== firstDigit) {
+            allSame = false;
+            break;
+        }
+    }
+
+    // Перевірка на наявність хоча б двох однакових цифр
+    let anySame = false;
+    for (let i = 0; i < digits.length - 1; i++) {
+        for (let j = i + 1; j < digits.length; j++) {
+            if (digits[i] === digits[j]) {
+                anySame = true;
+                break;
+            }
+        }
+        if (anySame) {
+            break;
+        }
+    }
+
+    return allSame ;
+}
+
+// Приклад використання функції
+const userInput = prompt("Введіть тризначне число:");
+const number = parseInt(userInput);
+if (!isNaN(number) && number >= 100 && number <= 999) {
+    const  allSame  = checkSameDigits(number);
+    console.log("Всі цифри однакові:", allSame);
+    console.log("Серед цифр є хоча б дві однакові:", allSame);
+} else {
+    console.log("Введене значення не є тризначним числом.");
+}
+
+
+  </script>
+
+</body>
+
+</html>
